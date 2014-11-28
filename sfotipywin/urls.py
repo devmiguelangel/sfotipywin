@@ -7,4 +7,5 @@ urlpatterns = patterns('',
     # url(r'^blog/', include('blog.urls')),
 
     url(r'^admin/', include(admin.site.urls)),
+    url(r'^track/(?P<id>[0-9]{1})/$', 'tracks.views.track_view', name='track'),
 )
