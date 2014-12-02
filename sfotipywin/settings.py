@@ -47,6 +47,7 @@ INSTALLED_APPS = (
     'albums',
     'userprofiles',
     'django_extensions',
+    'rest_framework',
 )
 
 GRAPPELLI_ADMIN_TITLE = 'Sfotipy'
