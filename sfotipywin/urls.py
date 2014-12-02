@@ -9,6 +9,7 @@ urlpatterns = patterns('',
     # url(r'^$', 'sfotipywin.views.home', name='home'),
     # url(r'^blog/', include('blog.urls')),
 
+    (r'^grappelli/', include('grappelli.urls')), # grappelli URLS
     url(r'^admin/', include(admin.site.urls)),
     url(r'^track/(?P<id>[0-9]+)/$', 'tracks.views.track_view', name='track'),
     url(r'^signup/$', 'userprofiles.views.signup', name='signup'),
