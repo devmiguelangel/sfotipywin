@@ -2,9 +2,19 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>Track</title>
+	<title>Track {{title}}</title>
 </head>
 <body>
+	<ul>
+		{% for track in tracks %}
+		<li>
+			<a href="{{ track.get_absolute_url }}">{{ track.name }}</a>
+			{% if track.id == selected_track.id %}
+			**************
+			{% endif %}
+		</li>
+		{% endfor %}
+	</ul>
 	<section>
 		<p>Name: {{ track.name }}</p>
 		<p>Order: {{ track.order }}</p>

@@ -16,6 +16,9 @@ class Track(models.Model):
     def __str__(self):
         return self.name
 
+    def get_absolute_url(self):
+        return '/track/{id}/'.format(id=self.id)
+
     def player(self):
         return """
 		<audio controls>

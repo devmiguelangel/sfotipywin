@@ -26,6 +26,11 @@ TEMPLATE_DEBUG = True
 
 ALLOWED_HOSTS = []
 
+from django.conf.global_settings import TEMPLATE_CONTEXT_PROCESSORS as TCP
+TEMPLATE_CONTEXT_PROCESSORS = TCP + (
+    "django.core.context_processors.request",
+    'sfotipywin.context_processors.basico',
+)
 
 # Application definition
 
@@ -51,6 +56,7 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.auth.middleware.SessionAuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    # 'sfotipywin.middleware.PaisMiddleware',
 )
 
 ROOT_URLCONF = 'sfotipywin.urls'
