@@ -6,6 +6,8 @@
 </head>
 <body>
 	<section>
+		{% load static from staticfiles %}
+		<img src="{% static "img003.jpg" %}" alt="Prueba" width="300">
 		<ul>
 			<li>{{ artist.first_name }}</li>
 			<li>{{ artist.last_name }}</li>

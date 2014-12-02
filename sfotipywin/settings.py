@@ -20,11 +20,11 @@ BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 SECRET_KEY = '$-ca3fst&+8_5@)5+h0vnu(d=7mr^bm7xou2e&atcl)o4qdv9c'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 TEMPLATE_DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 from django.conf.global_settings import TEMPLATE_CONTEXT_PROCESSORS as TCP
 TEMPLATE_CONTEXT_PROCESSORS = TCP + (
@@ -100,6 +100,16 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.7/howto/static-files/
 
 STATIC_URL = '/static/'
+STATICFILES_FINDER = (
+    'django.contrib.staticfiles.finders.FileSystemFinder',
+    'django.contrib.staticfiles.finders.AppDirectoriesFinder'
+)
+STATICFILES_STORAGE = (
+    'django.contrib.staticfiles.storage.CachedStaticFilesStorage'
+)
+STATIC_ROOT = os.sep.join(
+    os.path.abspath(__file__).split(os.sep)[:-2] + ['content'])
+
 
 MEDIA_ROOT = os.sep.join(
     os.path.abspath(__file__).split(os.sep)[:-2] + ['media'])
