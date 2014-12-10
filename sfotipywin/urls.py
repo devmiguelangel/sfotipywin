@@ -19,6 +19,7 @@ urlpatterns = patterns('',
 
     (r'^grappelli/', include('grappelli.urls')), # grappelli URLS
     url(r'^admin/', include(admin.site.urls)),
+    url(r'', include('userprofiles.urls')),
     url(r'^track/(?P<id>[0-9]+)/$', 'tracks.views.track_view', name='track'),
     url(r'^signup/$', 'userprofiles.views.signup', name='signup'),
     url(r'^signin/$', 'userprofiles.views.signin', name='signin'),
@@ -28,5 +29,5 @@ urlpatterns = patterns('',
 
 # if settings.DEBUG: # Manejar archivos estaticos en Mono DEBUG
 urlpatterns += patterns('',
-	url(r'^media/(?P<path>.*)$', 'django.views.static.serve', {'document_root': settings.MEDIA_ROOT})
+    url(r'^media/(?P<path>.*)$', 'django.views.static.serve', {'document_root': settings.MEDIA_ROOT})
 )

@@ -1,3 +1,10 @@
 from django.contrib import admin
+from userprofiles.models import UserProfile, UserTrack
 
-# Register your models here.
+
+class UserProfileAdmin(admin.ModelAdmin):
+    list_display = ('user', 'avatar', )
+
+
+admin.site.register(UserProfile, UserProfileAdmin)
+admin.site.register(UserTrack)
