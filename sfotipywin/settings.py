@@ -20,11 +20,11 @@ BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 SECRET_KEY = '$-ca3fst&+8_5@)5+h0vnu(d=7mr^bm7xou2e&atcl)o4qdv9c'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 TEMPLATE_DEBUG = True
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = []
 
 from django.conf.global_settings import TEMPLATE_CONTEXT_PROCESSORS as TCP
 TEMPLATE_CONTEXT_PROCESSORS = TCP + (
@@ -48,6 +48,7 @@ INSTALLED_APPS = (
     'userprofiles',
     'django_extensions',
     'rest_framework',
+    'sorl.thumbnail',
 )
 
 GRAPPELLI_ADMIN_TITLE = 'Sfotipy'

@@ -1,4 +1,5 @@
 from django.db import models
+from sorl.thumbnail import get_thumbnail
 from artists.models import Artist
 
 
@@ -16,3 +17,11 @@ class Album(models.Model):
             'cover': self.cover.path
         }
         return data
+
+    def image_cover(self):
+        return """
+        <img src="{image}" alt="{name}" />
+        """.format(image=get_thumbnail(self.cover, '50x50', quality=100).url,
+                   name=self.name)
+
+    image_cover.allow_tags = True

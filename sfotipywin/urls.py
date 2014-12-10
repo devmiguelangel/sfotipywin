@@ -28,4 +28,5 @@ urlpatterns = patterns('',
 
 # if settings.DEBUG: # Manejar archivos estaticos en Mono DEBUG
 urlpatterns += patterns('',
-	url(r'^media/(?P<path>.*)$', 'django.views.static.serve', {'document_root': settings.MEDIA_ROOT}))
+	url(r'^media/(?P<path>.*)$', 'django.views.static.serve', {'document_root': settings.MEDIA_ROOT})
+)
