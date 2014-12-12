@@ -10,9 +10,6 @@ class Track(models.Model):
     artist = models.ForeignKey(Artist)
     album = models.ForeignKey(Album)
 
-    # favorite_songs = models.ManyToManyField(
-    #     Artist, blank=True, related_name='favorite_of')
-
     def __str__(self):
         return self.name
 
@@ -21,14 +18,14 @@ class Track(models.Model):
 
     def player(self):
         return """
-		<audio controls>
-		  <source src="{track_file}" type="audio/mpeg">
-		Your browser does not support the audio element.
-		</audio>
-    	""".format(track_file=self.track_file.url)
+        <audio controls>
+          <source src="{track_file}" type="audio/mpeg">
+        Your browser does not support the audio element.
+        </audio>
+        """.format(track_file=self.track_file.url)
 
     player.allow_tags = True
     player.admin_order_field = 'track_file'
 
 # def natural_key(self):
-# 	return (self.name, ) + self.artist.natural_key()
+#   return (self.name, ) + self.artist.natural_key()

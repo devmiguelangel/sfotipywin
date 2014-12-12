@@ -1,4 +1,5 @@
 from django.db import models
+from slugify import slugify, slugify_unicode, Slugify, UniqueSlugify
 from sorl.thumbnail import get_thumbnail
 from artists.models import Artist
 
@@ -6,6 +7,7 @@ from artists.models import Artist
 class Album(models.Model):
     name = models.CharField(max_length=140)
     cover = models.ImageField(upload_to='albums')
+    slug = models.SlugField(max_length=140, blank=True, default='')
     artist = models.ForeignKey(Artist)
 
     def __str__(self):
@@ -25,3 +27,8 @@ class Album(models.Model):
                    name=self.name)
 
     image_cover.allow_tags = True
+
+    def save(self, *args, **kwargs):
+        custom_slugify = UniqueSlugify(to_lower=True)
+        self.slug = custom_slugify(str(self))
+        super(Album, self).save(*args, **kwargs)
