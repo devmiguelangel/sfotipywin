@@ -4,9 +4,10 @@ from tracks.models import Track
 from actions import export_as_excel
 
 
+@admin.register(Track)
 class TrackAdmin(admin.ModelAdmin):
     list_display = (
-        'artist', 'name', 'album', 'order', 'player', 'is_avicii', )
+        'artist', 'name', 'album', 'order', 'listen', 'player', 'is_avicii', )
     list_filter = ('artist', 'album', )
     search_fields = [
         'name', 'album__name', 'artist__first_name', 'artist__last_name', ]
@@ -19,5 +20,3 @@ class TrackAdmin(admin.ModelAdmin):
         return obj.artist.id == 1
 
     is_avicii.boolean = True
-
-admin.site.register(Track, TrackAdmin)

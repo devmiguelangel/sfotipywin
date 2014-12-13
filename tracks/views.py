@@ -1,6 +1,7 @@
+from rest_framework import viewsets
 from django.shortcuts import render, HttpResponse
 from django.core import serializers
-from rest_framework import viewsets
+from django.views.generic import ListView
 from tracks.models import Track
 from tracks.serializers import TrackSerializer
 
@@ -21,3 +22,8 @@ class TrackViewSet(viewsets.ModelViewSet):
     serializer_class = TrackSerializer
     # paginate_by = 2
     filter_fields = ('id', )
+
+
+class TrackTopListView(ListView):
+    queryset = Track.objects.top()[:3]
+    template_name = 'track_list.html'
